@@ -16,7 +16,6 @@ and isset($_POST['cin']) and isset($_POST['prenom'])){
         
         
         $res=$con->query($req);
-        echo $res;
         if($res){
             echo " succes ";
            // header("location : index.php");
