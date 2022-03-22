@@ -20,5 +20,8 @@ and isset($_POST['cne']) and isset($_POST['prenom'])){
             header("location : index.php");
         } else
         echo "echec l'etudiant deja existe ";
+
+
+        
 }
 ?>
