@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Red Hat Mono', monospace;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    background-image: url('./images/bg_ecole.jpg');
+}
+
+.left,
+.right {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.field {
+    padding: 50px 0;
+}
+
+.field form {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+}
+
+.field form input[type='text'] {
+    padding: 10px 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+    background: transparent;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.date {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.position_lab {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.position_lab label {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    color: #ccc;
+}
+
+.position_lab input {
+    width: 400px;
+    color: white;
+}
+
+.group_input {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+#date {
+    border: none;
+    margin-left: 20px;
+}
+
+.content_date {
+    margin-top: 10px;
+}
+
+.content_date div label {
+    margin-left: 10px;
+    color: #ccc;
+}
+
+.content_date .dt {
+    border-bottom: 1px solid #ccc;
+    padding: 0 0 12px 0;
+}
+
+.content_sub {
+    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.content_sub input[type="submit"] {
+    padding: 10px 15px;
+    text-transform: capitalize;
+    width: 250px;
+    font-weight: 500;
+    border-radius: 20px;
+    border: none;
+    font-size: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.file {
+    display: none;
+}
+
+.btn_left {
+    margin-top: 25px;
+}
+
+.form__label {
+    transition: all .3s;
+}
+
+.form__input:focus~.form__label {
+    top: -20px;
+    font-size: 15px;
+}
