@@ -17,7 +17,7 @@
         <fieldset class="field">
                 <form action="creation_prof.php" method="post">
                 <input type="file" name="profil" id="file" class ="file">
-                <label for="file"> <center> <img src="./images/photo-avatar-profil.png" alt="avatar" class="avatar" ></center></label>
+                <label for="file"> <center> <img src="./images/photo-avatar-profil.png" alt="avatar" id="avatar" class="avatar" ></center></label>
                
                 <div class="group_input">
                         <div class="position_lab">
@@ -70,5 +70,6 @@
     </div>
     
 </body>
+<script src="./javaScript/inscription_prof.js"></script>
 
 </html>

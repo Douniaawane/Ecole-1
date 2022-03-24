@@ -70,4 +70,5 @@
     </div>
     
 </body>
+<script src="./javaScript/inscription_etud.js"></script>
 </html>
