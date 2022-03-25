@@ -5,8 +5,145 @@
 
 body {
     background-color: beige;
+    font-family: 'Red Hat Mono', monospace;
+    font-family: 'Roboto', sans-serif;
 }
 
 table {
-    border: 1px solid;
+    margin-top: 10px;
+    width: 90vw;
+    border-radius: 5px;
+    border-collapse: collapse;
 }
+
+.tab_container {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+table th {
+    padding: 15px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: table-cell;
+    border: none;
+}
+
+.th-style {
+    background-color: #36304a;
+    color: white;
+}
+
+table td {
+    padding: 12px 15px;
+    text-align: center;
+    background-color: #f5f5f5;
+    color: #808080;
+}
+
+
+/*#0078d0 */
+
+.button-71 {
+    background-color: #ccc;
+    border: 0;
+    border-radius: 56px;
+    color: #808080;
+    cursor: pointer;
+    display: inline-block;
+    font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    outline: 0;
+    padding: 6px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-71:before {
+    background-color: initial;
+    background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+    border-radius: 125px;
+    content: "";
+    height: 50%;
+    left: 4%;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    transition: all .3s;
+    width: 92%;
+}
+
+.button-71:hover {
+    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+    transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+    .button-71 {
+        padding: 10px 30px;
+    }
+}
+
+.btn-72 {
+    background-color: #696969;
+    border: 0;
+    border-radius: 56px;
+    color: whitesmoke;
+    cursor: pointer;
+    display: inline-block;
+    font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    outline: 0;
+    padding: 6px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.btn-72:before {
+    background-color: initial;
+    background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+    border-radius: 125px;
+    content: "";
+    height: 50%;
+    left: 4%;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    transition: all .3s;
+    width: 92%;
+}
+
+.btn-72:hover {
+    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+    transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+    .btn-72 {
+        padding: 10px 30px;
+    }
+}
+
+
+/*
+<!-- HTML !-->
+<button class="button-71" role="button">Button 71</button>
+
+/* CSS */
+
+
+/*

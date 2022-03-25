@@ -14,12 +14,14 @@
         </div>
         <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="./Etudiant.php">Etudiant</a></li>
-            <li><a href="#">Enseignant</a></li>
+            <li  class="li_cont"> <a href="Etudiant.php"> Etudiant</a>
+        </li>
+            <li><a href="./Enseignant.php">Enseignant</a></li>
         </ul>
 
     </nav>
 
     
 </body>
+<script src="/javaScript/admi"></script>
 </html>

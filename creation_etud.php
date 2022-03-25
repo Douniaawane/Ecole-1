@@ -17,7 +17,7 @@ and isset($_POST['cne']) and isset($_POST['prenom'])){
         $res=$con->query($req);
         if($res){
             echo " succes ";
-            header("location : index.php");
+            header("Location:Etudiant.php");
         } else
         echo "echec l'etudiant deja existe ";
 

@@ -29,3 +29,14 @@ nav ul {
 nav ul li {
     list-style: none;
 }
+
+.li_cont {
+    position: relative;
+}
+
+.lis-group {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr;
+    display: none;
+}

@@ -2,12 +2,10 @@
 include "functions.php";
 include "connection.php";
 
-$items =[ "id", "nom" , "prenom ", "cne" , "date de naaissance" , "email" , "num classe"];
+$items =[ "id", "nom" , "prenom ", "cin" , "date de naaissance" , "email"];
 
-$req ="SELECT id_etudiant, nom , prenom ,cne ,date_naissance ,email,id_classe from etudiant ";
+$req ="SELECT id_enseignant , nom , prenom ,cin ,date_naissance ,email from enseignant ";
  $res = $con->query($req);
-
- 
 
 ?>
 
@@ -48,20 +46,20 @@ $req ="SELECT id_etudiant, nom , prenom ,cne ,date_naissance ,email,id_classe fr
             }
             echo "
             <td>
-            <form action='modification_etud.php' method='post'>
-            <input hidden type='text' name='idetud' value='$rows[id_etudiant]' >
+            <form action='modification_prof.php' method='post'>
+            <input hidden type='text' name='id_enseignant' value='$rows[id_enseignant]' >
             <button class='button-71' >modifier </button>
            </form></td>";
             echo "<td> 
-            <form action='suppression_etud.php' method='post'>
-            <input hidden type='text' name='idetud' value='$rows[id_etudiant]' >
+            <form action='suppression_prof.php' method='post'>
+            <input hidden type='text' name='id_enseignant' value='$rows[id_enseignant]' >
             <button class='btn-72'>supprimer </button></td>";
             
             echo "</tr>";
             
 
         }
-        echo $rows['id_etudiant'];
+        echo $rows['id_enseignant'];
         
         
        

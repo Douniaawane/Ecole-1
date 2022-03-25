@@ -2,12 +2,10 @@
 include "connection.php";
 
 
-
-
-if(isset($_POST['idetud']) ){
-    $id = $_POST['idetud'];
+if(isset($_POST['id_enseignant']) ){
+    $id = $_POST['id_enseignant'];
         
-    $sql = "SELECT * FROM etudiant WHERE id_etudiant = '$id'";
+    $sql = "SELECT * FROM enseignant WHERE id_enseignant = '$id'";
 
      $res =$con->query($sql);
         $row = mysqli_fetch_assoc($res);
@@ -15,30 +13,31 @@ if(isset($_POST['idetud']) ){
 }
 
 if(isset($_POST['btn'] )==="annuler" ){
-    header('location:Etudiant.php');
+    header('location:Enseignant.php');
 } 
 else{
     if(isset($_POST['nom']) and isset($_POST['password']) and 
         isset($_POST['email']) and isset($_POST['date']) 
-        and isset($_POST['cne']) and isset($_POST['prenom']) and isset($_POST['idetud'])  ){
+        and isset($_POST['cin']) and isset($_POST['prenom']) and isset($_POST['id_enseignant'])  ){
     $nom=$_POST['nom'];
     $date=$_POST['date'];
     $email=$_POST['email'];
-    $cne=$_POST['cne'];
+    $cin=$_POST['cin'];
     $prenom=$_POST['prenom'];
     $password=$_POST['password'];
-    $ide =$_POST['idetud'];
-    echo "$nom $prenom $date $password $cne $email ";
-        $req="UPDATE etudiant SET nom='$nom', prenom = '$prenom',cne ='$cne', date_naissance='$date',email = '$email',password ='$password' 
-        WHERE id_etudiant = $ide ";
+    $ide =$_POST['id_enseignant'];
+    
+        $req="UPDATE enseignant SET nom='$nom', prenom = '$prenom',cin ='$cin', date_naissance='$date',email = '$email',password ='$password' 
+        WHERE id_enseignant = $ide ";
         echo $req;
+        
     
         $ress=$con->query($req);
         if($ress){
-            header("Location:Etudiant.php");
+            header("Location:Enseignant.php");
 
         } else
-        echo "echec l'etudiant deja existe ";   
+        echo "echec enseignant deja existe ";   
 }
 }
 
@@ -72,8 +71,8 @@ else{
                             
                         </div>
                         <div class="position_lab">
-                            <label for="cne" class=" form__label"> Cne</label>
-                            <input class="form__input" type="text" value="<?php echo $row['cne'] ?>" name="cne" id="cne" >
+                            <label for="cin" class=" form__label"> Cin</label>
+                            <input class="form__input" type="text" value="<?php echo $row['cin'] ?>" name="cin" id="cin" >
                             
                         </div>
                         <div class="position_lab">
@@ -87,7 +86,7 @@ else{
                             
                         </div>
                         <div  hidden class="position_lab">
-                        <input hidden class="form__input" type="text" value="<?php echo $row['id_etudiant'] ?>" name="idetud" id="idetud" >
+                        <input hidden class="form__input" type="text" value="<?php echo $row['id_enseignant'] ?>" name="id_enseignant" id="id_enseignant" >
                             
                         </div>
 

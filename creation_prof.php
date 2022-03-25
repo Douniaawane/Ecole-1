@@ -13,12 +13,11 @@ and isset($_POST['cin']) and isset($_POST['prenom'])){
     echo "$nom $prenom $date $password $cin $email <br>";
         $req="INSERT INTO enseignant(nom,prenom,cin,date_naissance,email,password) 
         VALUES ('$nom','$prenom','$cin','$date','$email','$password')";
-        
-        
+     echo " <br> $req" ;
+    
         $res=$con->query($req);
         if($res){
-            echo " succes ";
-           // header("location : index.php");
+            header("Location:Enseignant.php");
         } else
         echo "echec l'enseignant deja existe ";
 }
