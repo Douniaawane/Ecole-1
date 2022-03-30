@@ -26,18 +26,48 @@ else{
     $prenom=$_POST['prenom'];
     $password=$_POST['password'];
     $ide =$_POST['id_enseignant'];
-    
-        $req="UPDATE enseignant SET nom='$nom', prenom = '$prenom',cin ='$cin', date_naissance='$date',email = '$email',password ='$password' 
+    $files=$_FILES['profil'];
+    $size=$files['size'];
+    $tmp_name=$files['tmp_name'];
+    $ereur=$files['error'];
+    $type=$files['type'];
+    $name=$files['name'];
+    $tab=explode('.',$name);
+    $extension=end($tab);
+    $tab1=["jpg","jpeg","png"];
+    if(in_array($extension,$tab1)){
+                if($size<120000){
+                    $upload="./images/";
+                    $new_name=uniqid();
+                    $new_name.= ".".$extension;
+                     $upload.=$new_name;
+                    
+        $req="UPDATE enseignant SET nom='$nom',image='$upload', prenom = '$prenom',cin ='$cin', date_naissance='$date',email = '$email',password ='$password' 
         WHERE id_enseignant = $ide ";
         echo $req;
+
+
+        $ress=$con->query($req);
+                        if($ress){
+                            move_uploaded_file($tmp_name,$upload);
+                            header("Location:Enseignant.php");
+
+                        } else
+                        echo "echec enseignant deja existe ";   
+
+    }else
+    echo "La taille non appropriée";
+                }else{
+                echo "Modifier votre fichier";
+
+}
+
+
+
+    
         
     
-        $ress=$con->query($req);
-        if($ress){
-            header("Location:Enseignant.php");
-
-        } else
-        echo "echec enseignant deja existe ";   
+        
 }
 }
 
@@ -55,11 +85,10 @@ else{
 <body>
 <div class="form-container">
             <fieldset class="field">
-                <form action="" method="post">
-                <!-- <input type="file" name="profil" id="file" class ="file">
-                <label for="file"> <center> <img src="./images/photo-avatar-profil.png" alt="avatar" class="avatar" ></center></label>
-                 -->
-                <div class="group_input">
+                <form action="" method="post" enctype="multipart/form-data">
+                <input hidden type="file" name="profil" id="file" class ="file">
+                <label for="file"> <center> <img src="<?php echo $row['image']?>" alt="avatar" class="avatar" ></center></label>
+                                <div class="group_input">
                         <div class="position_lab">
                             <label for="nom" class="form__label"> Nom </label>
                             <input class="form__input" type="text" value="<?php echo $row['nom'] ?>" name="nom" id="nom" >
@@ -116,7 +145,9 @@ else{
           
     
 </body>
+   <script src="./javaScript/modification.js"></script>
 </html>
+
 <!-- 
 
 

@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: beige;
+    background-color: #4EB2B5;
     font-family: 'Red Hat Mono', monospace;
     font-family: 'Roboto', sans-serif;
 }
@@ -47,10 +47,10 @@ table td {
 /*#0078d0 */
 
 .button-71 {
-    background-color: #ccc;
+    background-color: #696969;
     border: 0;
     border-radius: 56px;
-    color: #808080;
+    color: white;
     cursor: pointer;
     display: inline-block;
     font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
@@ -136,6 +136,76 @@ table td {
     .btn-72 {
         padding: 10px 30px;
     }
+}
+
+.img-pf {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.btn_ajout {
+    width: 150px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 10px;
+    font-weight: bold;
+    float: right;
+    background-color: #36304a;
+    color: white;
+    transition: transform .4;
+}
+
+.btn_ajout:hover,
+.recherch:hover {
+    color: #36304a;
+    transform: scale(1.05);
+    border: 2px solid;
+}
+
+.header_ajout {
+    width: 100%;
+}
+
+.recherch {
+    width: 400px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: white;
+    color: gray;
+    transition: transform .4s;
+}
+
+.search {
+    width: max-content;
+    position: relative;
+}
+
+.search button {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.search i {
+    color: black;
+    font-size: 20px;
+}
+
+.search i:hover {
+    color: blue;
+}
+
+.recherch:hover~.search button a i {
+    font-size: 30px !important;
+    color: white !important;
 }
 
 

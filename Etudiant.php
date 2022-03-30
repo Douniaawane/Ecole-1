@@ -2,9 +2,9 @@
 include "functions.php";
 include "connection.php";
 
-$items =[ "id", "nom" , "prenom ", "cne" , "date de naaissance" , "email" , "num classe"];
+$items =[ "id","image", "nom" , "prenom ", "cne" , "date de naaissance" , "email" , "num classe"];
 
-$req ="SELECT id_etudiant, nom , prenom ,cne ,date_naissance ,email,id_classe from etudiant ";
+$req ="SELECT id_etudiant,image, nom , prenom ,cne ,date_naissance ,email,id_classe from etudiant ";
  $res = $con->query($req);
 
  
@@ -42,36 +42,40 @@ $req ="SELECT id_etudiant, nom , prenom ,cne ,date_naissance ,email,id_classe fr
         
         while($rows =mysqli_fetch_assoc($res)){
             echo "<tr>";
-            foreach($rows as $row ){
-                echo " <td>$row</td>";
+            foreach($rows as $key => $row ){
+                 if($key!='image'){
+                    echo " <td>$row</td>";
+                 }else
+                 echo "<td><img  class='img-pf' src='$row' alt='image_profil'/></td>";
+                
                 
             }
-            echo "
-            <td>
-            <form action='modification_etud.php' method='post'>
-            <input hidden type='text' name='idetud' value='$rows[id_etudiant]' >
-            <button class='button-71' >modifier </button>
-           </form></td>";
+            echo " <td>
+                <form action='modification_etud.php' method='post'>
+                    <input hidden type='text' name='idetud' value='$rows[id_etudiant]' >
+                    <button class='button-71' >modifier </button>
+                </form>
+            </td>";
             echo "<td> 
-            <form action='suppression_etud.php' method='post'>
-            <input hidden type='text' name='idetud' value='$rows[id_etudiant]' >
-            <button class='btn-72'>supprimer </button></td>";
+                <form action='suppression_etud.php' method='post'>
+                    <input hidden type='text' name='idetud' value='$rows[id_etudiant]' >
+                    <button class='btn-72'>supprimer </button>
+                </form>
+            </td>";
             
             echo "</tr>";
             
 
         }
-        echo $rows['id_etudiant'];
         
-        
-       
+
        
         ?>
         
        
     </table>
 </div>
-
+<img src="" alt="">
     
 </body>
 <script src="./javaScript/Etudiant.js"></script>

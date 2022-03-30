@@ -2,9 +2,9 @@
 include "functions.php";
 include "connection.php";
 
-$items =[ "id", "nom" , "prenom ", "cin" , "date de naaissance" , "email"];
+$items =[ "id","image" ,"nom" , "prenom ", "cin" , "date de naaissance" , "email"];
 
-$req ="SELECT id_enseignant , nom , prenom ,cin ,date_naissance ,email from enseignant ";
+$req ="SELECT id_enseignant ,image, nom , prenom ,cin ,date_naissance ,email from enseignant ";
  $res = $con->query($req);
 
 ?>
@@ -28,6 +28,15 @@ $req ="SELECT id_enseignant , nom , prenom ,cin ,date_naissance ,email from ense
 <body>
 
 <div class="tab_container">
+     <div class="header_ajout">
+         <a href="inscription_prof.php"><button class="btn_ajout" >Ajout</button></a>
+         <div class="search">
+            <input class="recherch" type="text" placeholder="Entrer le CIN">
+        
+            <button><a href="#">  <i class="fa fa-search" aria-hidden="true"></i></a></button>
+         </div>
+     </div>
+
     <table >
         <?php
         echo "<tr class='th-style'>";
@@ -40,8 +49,14 @@ $req ="SELECT id_enseignant , nom , prenom ,cin ,date_naissance ,email from ense
         
         while($rows =mysqli_fetch_assoc($res)){
             echo "<tr>";
-            foreach($rows as $row ){
-                echo " <td>$row</td>";
+            foreach($rows as $key=>$row ){
+                if($key!='image'){
+                    echo " <td>$row</td>";
+                 }else
+                 echo "<td><img  class='img-pf' src='$row' alt='image_profil'/></td>";
+                
+                
+                
                 
             }
             echo "
@@ -53,9 +68,9 @@ $req ="SELECT id_enseignant , nom , prenom ,cin ,date_naissance ,email from ense
             echo "<td> 
             <form action='suppression_prof.php' method='post'>
             <input hidden type='text' name='id_enseignant' value='$rows[id_enseignant]' >
-            <button class='btn-72'>supprimer </button></td>";
-            
-            echo "</tr>";
+            <button class='btn-72'>supprimer </button>
+            </form></td>";
+                 echo "</tr>";
             
 
         }

@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
 }
@@ -132,4 +132,4 @@ body {
 .form__input:focus~.form__label {
     top: -20px;
     font-size: 15px;
-}
+} */

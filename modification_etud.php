@@ -28,17 +28,53 @@ else{
     $prenom=$_POST['prenom'];
     $password=$_POST['password'];
     $ide =$_POST['idetud'];
-    echo "$nom $prenom $date $password $cne $email ";
-        $req="UPDATE etudiant SET nom='$nom', prenom = '$prenom',cne ='$cne', date_naissance='$date',email = '$email',password ='$password' 
-        WHERE id_etudiant = $ide ";
-        echo $req;
-    
-        $ress=$con->query($req);
-        if($ress){
-            header("Location:Etudiant.php");
 
-        } else
-        echo "echec l'etudiant deja existe ";   
+
+
+
+                $files=$_FILES['profil'];
+            $size=$files['size'];
+            $tmp_name=$files['tmp_name'];
+            $ereur=$files['error'];
+            $type=$files['type'];
+            $name=$files['name'];
+            $tab=explode('.',$name);
+            $extension=end($tab);
+            $tab1=["jpg","jpeg","png"];
+            if(in_array($extension,$tab1)){
+                        if($size<120000){
+                            $upload="./images/";
+                            $new_name=uniqid();
+                            $new_name.= ".".$extension;
+                             $upload.=$new_name;
+                             $req="UPDATE etudiant SET nom='$nom',image='$upload', prenom = '$prenom',cne ='$cne', date_naissance='$date',email = '$email',password ='$password' 
+                             WHERE id_etudiant = $ide ";
+                             echo $req;
+                         
+                             $ress=$con->query($req);
+                                            if($ress){
+                                                move_uploaded_file($tmp_name,$upload);
+                                                header("Location:Etudiant.php");
+                     
+                                                } else
+                                                echo "echec l'etudiant deja existe ";   
+
+
+
+
+                        }else
+                            echo "La taille non appropriée";
+            }else{
+                  echo "Modifier votre fichier";
+
+            }
+                  
+
+
+
+
+  
+       
 }
 }
 
@@ -56,38 +92,39 @@ else{
 <body>
 <div class="form-container">
             <fieldset class="field">
-                <form action="" method="post">
-                <!-- <input type="file" name="profil" id="file" class ="file">
-                <label for="file"> <center> <img src="./images/photo-avatar-profil.png" alt="avatar" class="avatar" ></center></label>
-                 -->
+                <form action="" method="post" enctype="multipart/form-data">
+                <input hidden  type="file" name="profil" id="file" class ="file" required>
+                <label  for="file">
+                 <center> <img src="<?php echo $row['image'] ?>" alt="avatar" class="avatar" ></center></label>
+                 
                 <div class="group_input">
                         <div class="position_lab">
                             <label for="nom" class="form__label"> Nom </label>
-                            <input class="form__input" type="text" value="<?php echo $row['nom'] ?>" name="nom" id="nom" >
+                            <input class="form__input" type="text" value="<?php echo $row['nom'] ?>" name="nom" id="nom" required >
                         
                         </div>
                         <div class="position_lab">
                         <label for="prenom " class="form__label" >Prenom</label>
-                        <input class="form__input" type="text" value="<?php echo $row['prenom'] ?>" name="prenom" id="prenom">
+                        <input class="form__input" type="text" value="<?php echo $row['prenom'] ?>" name="prenom" id="prenom" required>
                             
                         </div>
                         <div class="position_lab">
                             <label for="cne" class=" form__label"> Cne</label>
-                            <input class="form__input" type="text" value="<?php echo $row['cne'] ?>" name="cne" id="cne" >
+                            <input class="form__input" type="text" value="<?php echo $row['cne'] ?>" name="cne" id="cne" required>
                             
                         </div>
                         <div class="position_lab">
                             <label for="email" class=" form__label"> Email</label>
-                        <input class="form__input" type="text" value="<?php echo $row['email'] ?>" name="email" id="email" >
+                        <input class="form__input" type="text" value="<?php echo $row['email'] ?>" name="email" id="email"required >
                             
                         </div>
                         <div class="position_lab">
                             <label for="password" class=" form__label"> Password</label>
-                        <input class="form__input" type="text" value="<?php echo $row['password'] ?>" name="password" id="password" >
+                        <input class="form__input" type="text" value="<?php echo $row['password'] ?>" name="password" id="password" required>
                             
                         </div>
                         <div  hidden class="position_lab">
-                        <input hidden class="form__input" type="text" value="<?php echo $row['id_etudiant'] ?>" name="idetud" id="idetud" >
+                        <input hidden class="form__input" type="text" value="<?php echo $row['id_etudiant'] ?>" name="idetud" id="idetud"  >
                             
                         </div>
 
@@ -117,8 +154,9 @@ else{
           
     
 </body>
+<script src="./javaScript/modification.js"></script>
 </html>
-<!-- 
+ 
 
 
-        </div> -->
+    
