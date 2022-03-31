@@ -12,7 +12,7 @@ if(isset($_POST['id_enseignant']) ){
 
 }
 
-if(isset($_POST['btn'] )==="annuler" ){
+if($_POST['btn'] ==="annuler" ){
     header('location:Enseignant.php');
 } 
 else{
@@ -26,7 +26,24 @@ else{
     $prenom=$_POST['prenom'];
     $password=$_POST['password'];
     $ide =$_POST['id_enseignant'];
+
     $files=$_FILES['profil'];
+
+    if($files['error'] !=0){
+        $req="UPDATE enseignant SET nom='$nom', prenom = '$prenom',cin ='$cin', date_naissance='$date',email = '$email',password ='$password' 
+        WHERE id_enseignant = $ide ";
+
+        $ress=$con->query($req);
+        if($ress){
+            move_uploaded_file($tmp_name,$upload);
+            header("Location:Enseignant.php");
+
+        } else
+        echo "echec enseignant deja existe "; 
+
+    }
+    else{
+        
     $size=$files['size'];
     $tmp_name=$files['tmp_name'];
     $ereur=$files['error'];
@@ -36,18 +53,16 @@ else{
     $extension=end($tab);
     $tab1=["jpg","jpeg","png"];
     if(in_array($extension,$tab1)){
-                if($size<120000){
+            if($size<120000){
                     $upload="./images/";
                     $new_name=uniqid();
                     $new_name.= ".".$extension;
                      $upload.=$new_name;
                     
-        $req="UPDATE enseignant SET nom='$nom',image='$upload', prenom = '$prenom',cin ='$cin', date_naissance='$date',email = '$email',password ='$password' 
-        WHERE id_enseignant = $ide ";
-        echo $req;
+                $req="UPDATE enseignant SET nom='$nom',image='$upload', prenom = '$prenom',cin ='$cin', date_naissance='$date',email = '$email',password ='$password' 
+                WHERE id_enseignant = $ide ";
 
-
-        $ress=$con->query($req);
+                     $ress=$con->query($req);
                         if($ress){
                             move_uploaded_file($tmp_name,$upload);
                             header("Location:Enseignant.php");
@@ -55,10 +70,14 @@ else{
                         } else
                         echo "echec enseignant deja existe ";   
 
-    }else
-    echo "La taille non appropriée";
-                }else{
+            }else
+                echo "La taille non appropriée";
+    }else{
                 echo "Modifier votre fichier";
+
+    }
+
+
 
 }
 

@@ -14,25 +14,40 @@ if(isset($_POST['idetud']) ){
 
 }
 
-if(isset($_POST['btn'] )==="annuler" ){
-    header('location:Etudiant.php');
+
+if($_POST['btn']=="annuler" ){
+
+    header("Location:Etudiant.php");
 } 
 else{
     if(isset($_POST['nom']) and isset($_POST['password']) and 
         isset($_POST['email']) and isset($_POST['date']) 
         and isset($_POST['cne']) and isset($_POST['prenom']) and isset($_POST['idetud'])  ){
-    $nom=$_POST['nom'];
-    $date=$_POST['date'];
-    $email=$_POST['email'];
-    $cne=$_POST['cne'];
-    $prenom=$_POST['prenom'];
-    $password=$_POST['password'];
-    $ide =$_POST['idetud'];
+        $nom=$_POST['nom'];
+        $date=$_POST['date'];
+        $email=$_POST['email'];
+        $cne=$_POST['cne'];
+        $prenom=$_POST['prenom'];
+        $password=$_POST['password'];
+        $ide =$_POST['idetud'];
 
 
 
+        $files=$_FILES['profil'];
+        
+        if($files['error'] !=0){
+            $req="UPDATE etudiant SET nom='$nom', prenom = '$prenom',cne ='$cne', date_naissance='$date',email = '$email',password ='$password' 
+            WHERE id_etudiant = $ide ";
+            
+            $ress=$con->query($req);
 
-                $files=$_FILES['profil'];
+            if($ress){
+                echo "secces ";
+               header("Location:Etudiant.php");
+            } else
+                echo "echec l'etudiant deja existe "; 
+        }
+        else{
             $size=$files['size'];
             $tmp_name=$files['tmp_name'];
             $ereur=$files['error'];
@@ -42,32 +57,35 @@ else{
             $extension=end($tab);
             $tab1=["jpg","jpeg","png"];
             if(in_array($extension,$tab1)){
-                        if($size<120000){
-                            $upload="./images/";
-                            $new_name=uniqid();
-                            $new_name.= ".".$extension;
-                             $upload.=$new_name;
-                             $req="UPDATE etudiant SET nom='$nom',image='$upload', prenom = '$prenom',cne ='$cne', date_naissance='$date',email = '$email',password ='$password' 
-                             WHERE id_etudiant = $ide ";
-                             echo $req;
-                         
-                             $ress=$con->query($req);
-                                            if($ress){
-                                                move_uploaded_file($tmp_name,$upload);
-                                                header("Location:Etudiant.php");
-                     
-                                                } else
-                                                echo "echec l'etudiant deja existe ";   
+                if($size<120000){
+                    $upload="./images/";
+                    $new_name=uniqid();
+                    $new_name.= ".".$extension;
+                    $upload.=$new_name;
+                    
+                        echo $req;
+                        $req="UPDATE etudiant SET nom='$nom',image='$upload', prenom = '$prenom',cne ='$cne', date_naissance='$date',email = '$email',password ='$password' 
+                        WHERE id_etudiant = $ide ";
+                        $ress=$con->query($req);
 
+                    if($ress){
 
+                        move_uploaded_file($tmp_name,$upload);
+                        header("Location:Etudiant.php");
 
+                    } else
+                        echo "echec l'etudiant deja existe ";   
 
-                        }else
-                            echo "La taille non appropriée";
+                }else
+                    echo "La taille non appropriée";
             }else{
-                  echo "Modifier votre fichier";
+                    echo "Modifier votre fichier";
 
             }
+            
+
+        }
+    
                   
 
 
@@ -93,7 +111,7 @@ else{
 <div class="form-container">
             <fieldset class="field">
                 <form action="" method="post" enctype="multipart/form-data">
-                <input hidden  type="file" name="profil" id="file" class ="file" required>
+                <input hidden  type="file" name="profil" id="file" class ="file" >
                 <label  for="file">
                  <center> <img src="<?php echo $row['image'] ?>" alt="avatar" class="avatar" ></center></label>
                  
@@ -135,7 +153,7 @@ else{
                             </div>
                             <div class="content_sub btn_left">
                             <input class="button-81" type="submit" name="btn" value="enregistrer"> 
-                            <input  class="button-81"type="submit" name="btn" value="annuler"> 
+                            <input  class="button-81" type="submit" name="btn" value="annuler"> 
 
                             </div>
                            

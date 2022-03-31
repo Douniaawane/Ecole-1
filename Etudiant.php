@@ -30,6 +30,14 @@ $req ="SELECT id_etudiant,image, nom , prenom ,cne ,date_naissance ,email,id_cla
 <body>
 
 <div class="tab_container">
+<div class="header_ajout">
+         <a href="inscription_etud.php"><button class="btn_ajout" >Ajout</button></a>
+         <div class="search">
+            <input class="recherch" type="text" placeholder="Entrer le CIN">
+        
+            <button><a href="#">  <i class="fa fa-search" aria-hidden="true"></i></a></button>
+         </div>
+     </div>
     <table >
         <?php
         echo "<tr class='th-style'>";

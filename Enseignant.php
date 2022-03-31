@@ -6,6 +6,13 @@ $items =[ "id","image" ,"nom" , "prenom ", "cin" , "date de naaissance" , "email
 
 $req ="SELECT id_enseignant ,image, nom , prenom ,cin ,date_naissance ,email from enseignant ";
  $res = $con->query($req);
+ if(isset($_POST['click'])){
+    //   $recherche=htmlspecialchars($_POST['click']);
+
+    $cin=$_POST['search'];
+    $req ="SELECT id_enseignant ,image, nom , prenom ,cin ,date_naissance ,email from enseignant where cin='$cin'";
+    $res = $con->query($req);
+}
 
 ?>
 
@@ -31,10 +38,14 @@ $req ="SELECT id_enseignant ,image, nom , prenom ,cin ,date_naissance ,email fro
      <div class="header_ajout">
          <a href="inscription_prof.php"><button class="btn_ajout" >Ajout</button></a>
          <div class="search">
-            <input class="recherch" type="text" placeholder="Entrer le CIN">
-        
-            <button><a href="#">  <i class="fa fa-search" aria-hidden="true"></i></a></button>
-         </div>
+             <form action="" method="post">
+            <input class="recherch" type="text" name="search" placeholder="Entrer le CIN">
+            
+            <button type="submit" name="click" value="search"><a >  <i class="fa fa-search" aria-hidden="true"></i> </a></button> 
+          
+
+            </form>
+        </div>
      </div>
 
     <table >
