@@ -10,8 +10,11 @@ $req ="SELECT id_enseignant ,image, nom , prenom ,cin ,date_naissance ,email fro
     //   $recherche=htmlspecialchars($_POST['click']);
 
     $cin=$_POST['search'];
-    $req ="SELECT id_enseignant ,image, nom , prenom ,cin ,date_naissance ,email from enseignant where cin='$cin'";
+    $req ="SELECT id_enseignant ,image, nom , prenom ,cin ,date_naissance ,email from enseignant where cin like '$cin%' ";
     $res = $con->query($req);
+    if($res->num_rows==0){
+        echo "<br>----------- there is no student with this name :(";
+    }
 }
 
 ?>
@@ -26,13 +29,16 @@ $req ="SELECT id_enseignant ,image, nom , prenom ,cin ,date_naissance ,email fro
     <link rel="stylesheet" href="./css/Etudiant.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="./css/admin.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+<?php 
+   include 'nav.php';
+   ?>
 
 <div class="tab_container">
      <div class="header_ajout">

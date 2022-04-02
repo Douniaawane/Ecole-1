@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #4EB2B5;
+    background-color: #D0E6F0;
     font-family: 'Red Hat Mono', monospace;
     font-family: 'Roboto', sans-serif;
 }
@@ -32,7 +32,7 @@ table th {
 }
 
 .th-style {
-    background-color: #36304a;
+    background-color: #1B819D;
     color: white;
 }
 
@@ -47,7 +47,7 @@ table td {
 /*#0078d0 */
 
 .button-71 {
-    background-color: #696969;
+    background-color: #1B819D;
     border: 0;
     border-radius: 56px;
     color: white;
@@ -93,7 +93,7 @@ table td {
 }
 
 .btn-72 {
-    background-color: #696969;
+    background-color: #1B819D;
     border: 0;
     border-radius: 56px;
     color: whitesmoke;
@@ -146,22 +146,22 @@ table td {
 
 .btn_ajout {
     width: 150px;
-    border: 1px solid black;
+    border: none;
     padding: 10px;
     margin: 10px 0px;
     border-radius: 10px;
     font-weight: bold;
     float: right;
-    background-color: #36304a;
-    color: white;
-    transition: transform .4;
+    background-color: whitesmoke;
+    color: gray;
+    transition: transform .4s;
 }
 
 .btn_ajout:hover,
 .recherch:hover {
     color: #36304a;
     transform: scale(1.05);
-    border: 2px solid;
+    border: 2px solid transparent;
 }
 
 .header_ajout {
@@ -169,8 +169,8 @@ table td {
 }
 
 .recherch {
-    width: 350px;
-    border: 2px solid gray;
+    width: 400px;
+    border: 2px solid transparent;
     padding: 12px;
     margin: 10px 0px;
     border-radius: 10px;
@@ -178,7 +178,7 @@ table td {
     background-color: white;
     color: gray;
     transition: transform .4s;
-    position: relative;
+    outline: none;
 }
 
 .search {
@@ -186,17 +186,13 @@ table td {
     position: relative;
 }
 
-.btn_search {
-    /* position: absolute;
-    top: 10px;
-    right: 3px; */
+.search button {
+    position: absolute;
+    top: 20px;
+    right: 10px;
     outline: none;
     border: none;
-    background-color: yellow;
-    padding: 10px;
-    width: 100px;
-    font-size: 18px;
-    border-radius: 10px;
+    background-color: transparent;
 }
 
 .search i {
@@ -206,6 +202,7 @@ table td {
 
 .search i:hover {
     color: blue;
+    transform: scale(1.2);
 }
 
 .recherch:hover~.search button a i {

@@ -6,8 +6,17 @@ $items =[ "id","image", "nom" , "prenom ", "cne" , "date de naaissance" , "email
 
 $req ="SELECT id_etudiant,image, nom , prenom ,cne ,date_naissance ,email,id_classe from etudiant ";
  $res = $con->query($req);
+ if(isset($_POST['click'])){
+    //   $recherche=htmlspecialchars($_POST['click']);
 
- 
+    $cne=$_POST['search'];
+    $req ="SELECT id_etudiant,image, nom , prenom ,cne ,date_naissance ,email,id_classe from etudiant where cne like '$cne%' ";
+
+    $res = $con->query($req);
+    if($res->num_rows==0){
+        echo "<br>----------- there is no student with this name :(";
+    }
+}
 
 ?>
 
@@ -22,22 +31,30 @@ $req ="SELECT id_etudiant,image, nom , prenom ,cne ,date_naissance ,email,id_cla
     
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-    
+    <link rel="stylesheet" href="./css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+<?php 
+   include 'nav.php';
+   ?>
 
 <div class="tab_container">
-<div class="header_ajout">
-         <a href="inscription_etud.php"><button class="btn_ajout" >Ajout</button></a>
+    <div class="header_ajout">
+         <a href="inscription_prof.php"><button class="btn_ajout" >Ajout</button></a>
          <div class="search">
-            <input class="recherch" type="text" placeholder="Entrer le CIN">
-        
-            <button><a href="#">  <i class="fa fa-search" aria-hidden="true"></i></a></button>
-         </div>
+             <form action="" method="post">
+            <input class="recherch" type="text" name="search" placeholder="Entrer le CIN">
+            
+            <button type="submit" name="click" value="search"><a >  <i class="fa fa-search" aria-hidden="true"></i> </a></button> 
+          
+
+            </form>
+        </div>
      </div>
+
     <table >
         <?php
         echo "<tr class='th-style'>";
