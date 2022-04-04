@@ -10,34 +10,9 @@
     <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
-    <nav>
-        <div class="img_profile">
-            <img src="./images/photo-avatar-profil.png" alt="avatar" id ="img_prof">
-        </div>  
-        <div class="navbar">
-           <div> <a href="#home">Home</a></div>
-            
-            <div class="dropdown">
-                <button class="dropbtn">Gestion 
-                <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                        <a href="./Etudiant.php">Etudiant</a>
-                        <a href="./Enseignant.php">Enseignant</a>
-                </div>
-            </div> 
-            <div class="dropdown">
-                <button class="dropbtn">Creation 
-                <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                        <a href="./inscription_etud.php">Etudiant</a>
-                        <a href="./inscription_prof.php">Enseignant</a>
-                </div>
-            </div> 
-        </div>
-
-    </nav>
+   <?php 
+   include 'nav.php';
+   ?>
 
     
 </body>
